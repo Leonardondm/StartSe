@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect   
-from empresarios.models import Empresas, Documento
+from empresarios.models import Empresas, Documento, Metricas
 from django.http import HttpResponse, Http404
 from .models import PropostaInvestimento
 from django.contrib import messages, auth
@@ -21,7 +21,9 @@ def sugestao(request):
             empresas = Empresas.objects.filter(tempo_existencia='+5').filter(estagio="E")
         elif tipo == 'D':
             empresas = Empresas.objects.filter(tempo_existencia__in=['-6', '+6', '+1']).exclude(estagio="E")
-        #TODO: Tipo generico
+        elif tipo == 'G':
+            empresas = Empresas.objects.all()
+
         empresas = empresas.filter(area__in=area)
         
         empresas_selecionadas = []
@@ -49,8 +51,9 @@ def ver_empresa(request, id):
 
     percentual_disponivel = empresa.percentual_equity - percentual_vendido
 
-    #TODO: Listar metricas dinamicamente
-    return render(request, 'ver_empresa.html', {'empresa': empresa, 'documentos':documentos, 'percentual_vendido':int(percentual_vendido), 'concretizado':concretizado, 'percentual_disponivel':percentual_disponivel})
+    metricas = Metricas.objects.filter(empresa=empresa)
+
+    return render(request, 'ver_empresa.html', {'empresa': empresa, 'documentos':documentos, 'percentual_vendido':int(percentual_vendido), 'concretizado':concretizado, 'percentual_disponivel':percentual_disponivel, 'metricas': metricas})
 
 
 def realizar_proposta(request, id):
