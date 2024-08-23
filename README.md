@@ -44,9 +44,9 @@ StartSe é uma plataforma web desenvolvida para facilitar a conexão entre start
 Siga os passos abaixo para configurar e rodar o projeto localmente:
 
 1. **Clone o repositório**:
-   ```bash
-   git clone https://github.com/Leonardondm/StartSe.git
-   ```
+  ```bash
+  git clone https://github.com/Leonardondm/StartSe.git
+  ```
 2. **Navegue até o diretório do projeto**:
   ```bash
   cd StartSe-main
@@ -57,15 +57,15 @@ Siga os passos abaixo para configurar e rodar o projeto localmente:
   source venv/bin/activate  # No Windows: venv\Scripts\activate
   ```
 4. **Instale as dependências do projeto**:
-   ```bash
-   git clone https://github.com/Leonardondm/StartSe.git
-   ```
+  ```bash
+  git clone https://github.com/Leonardondm/StartSe.git
+  ```
 5. **Realize as migrações do banco de dados**:
-   ```bash
-   python manage.py migrate
-   ```
+  ```bash
+  python manage.py migrate
+  ```
 6. **Inicie o servidor de desenvolvimento**:
-   ```bash
-   python manage.py runserver
-   ```
+  ```bash
+  python manage.py runserver
+  ```
 7. **Acesse a aplicação: Abra o navegador e vá para http://localhost:8000 para visualizar a aplicação.**
